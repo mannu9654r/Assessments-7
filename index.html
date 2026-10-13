@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 7 | API Planning</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="hero">
+    <span class="tag">WEB DEVELOPMENT ASSIGNMENT</span>
+    <h1>To-Do List API Planning</h1>
+    <p>Assignment 7 · RESTful API Design</p>
+    <div class="student">
+      <span>Student Name: Your Name</span>
+      <span>Topic: React.js & REST APIs</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>01. Objective</h2>
+      <p>
+        The objective of this assignment is to identify and plan
+        RESTful APIs for a To-Do List application. These APIs will
+        help users create, view, update and delete tasks.
+        This assignment focuses on API planning, not implementation.
+      </p>
+    </section>
+    <section class="card">
+      <h2>02. API Overview</h2>
+      <div class="base-url">
+        <span>Base URL</span>
+        <code>https://api.example.com/api/v1</code>
+      </div>
+      <p class="muted">
+        Note: This is a sample URL for planning purposes.
+        It is not a live API server.
+      </p>
+    </section>
+    <section class="card">
+      <h2>03. Task Data Structure</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>String / UUID</td>
+              <td>Unique task identifier</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>String</td>
+              <td>Task name (required)</td>
+            </tr>
+            <tr>
+              <td>description</td>
+              <td>String</td>
+              <td>Task details</td>
+            </tr>
+            <tr>
+              <td>completed</td>
+              <td>Boolean</td>
+              <td>Task completion status</td>
+            </tr>
+            <tr>
+              <td>createdAt</td>
+              <td>Date-time</td>
+              <td>Creation timestamp</td>
+            </tr>
+            <tr>
+              <td>updatedAt</td>
+              <td>Date-time</td>
+              <td>Last update timestamp</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="card">
+      <h2>04. Required API Endpoints</h2>
+      <p class="muted">Select an endpoint to view its details.</p>
+      <div id="api-list" class="api-list"></div>
+      <div id="api-details" class="api-details"></div>
+    </section>
+    <section class="card">
+      <h2>05. CRUD Operations</h2>
+      <div class="crud-grid">
+        <div class="crud-item">
+          <span class="crud-icon">C</span>
+          <h3>Create</h3>
+          <code>POST /tasks</code>
+          <p>Create a new task.</p>
+        </div>
+        <div class="crud-item">
+          <span class="crud-icon">R</span>
+          <h3>Read</h3>
+          <code>GET /tasks</code>
+          <p>Retrieve all or one task.</p>
+        </div>
+        <div class="crud-item">
+          <span class="crud-icon">U</span>
+          <h3>Update</h3>
+          <code>PUT /tasks/:id</code>
+          <p>Update task details or status.</p>
+        </div>
+        <div class="crud-item">
+          <span class="crud-icon">D</span>
+          <h3>Delete</h3>
+          <code>DELETE /tasks/:id</code>
+          <p>Remove a task.</p>
+        </div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>06. Common HTTP Status Codes</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Meaning</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200 OK</td>
+              <td>Success</td>
+              <td>Task retrieved or updated</td>
+            </tr>
+            <tr>
+              <td>201 Created</td>
+              <td>Resource created</td>
+              <td>New task added</td>
+            </tr>
+            <tr>
+              <td>204 No Content</td>
+              <td>Success without response body</td>
+              <td>Task deleted</td>
+            </tr>
+            <tr>
+              <td>400 Bad Request</td>
+              <td>Invalid data</td>
+              <td>Missing task title</td>
+            </tr>
+            <tr>
+              <td>404 Not Found</td>
+              <td>Resource not found</td>
+              <td>Invalid task ID</td>
+            </tr>
+            <tr>
+              <td>500 Server Error</td>
+              <td>Unexpected server issue</td>
+              <td>Database failure</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="card">
+      <h2>07. Potential Challenges</h2>
+      <ul class="challenge-list">
+        <li><strong>Validation:</strong> Prevent empty titles and invalid data.</li>
+        <li><strong>Unique IDs:</strong> Generate a unique identifier on the server.</li>
+        <li><strong>Data persistence:</strong> Save tasks in a database.</li>
+        <li><strong>Error handling:</strong> Handle missing tasks and failed requests.</li>
+        <li><strong>Frontend synchronization:</strong> Refresh the UI after changes.</li>
+        <li><strong>Security:</strong> Protect user-specific tasks with authentication.</li>
+        <li><strong>Network issues:</strong> Handle timeouts and connection failures.</li>
+      </ul>
+    </section>
+    <section class="card">
+      <h2>08. How the APIs Work</h2>
+      <p>
+        The React frontend sends HTTP requests to the backend.
+        The backend validates the request, performs the required
+        operation in the database, and returns a response in JSON.
+        The frontend then updates the displayed task list.
+      </p>
+      <div class="flow">
+        <div>React Frontend</div>
+        <span>↓ HTTP Request</span>
+        <div>REST API / Backend</div>
+        <span>↓ Database Operation</span>
+        <div>Database</div>
+        <span>↓ JSON Response</span>
+        <div>Updated UI</div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>09. Conclusion</h2>
+      <p>
+        The planned APIs follow RESTful principles by using resource-based
+        URLs, standard HTTP methods, JSON data, unique identifiers and
+        meaningful status codes. Together, they cover the CRUD operations
+        required for a To-Do List application.
+      </p>
+    </section>
+    <footer>
+      <p>Assignment 7 · Identifying APIs for a To-Do List App</p>
+      <button id="print-btn" type="button">Print / Save as PDF</button>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
